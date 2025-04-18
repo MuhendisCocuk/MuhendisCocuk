@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nasıl Yapılır?</title>
+    <link rel="icon" href="MuhendisCocukCircleIcon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Genel Arka Plan ve Yazı Rengi */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ecf0f1;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #2c3e50, #34495e, #1abc9c, #3498db);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Menü Stili (TÜM SAYFALARDA AYNI OLMALI) */
+        nav {
+            width: 100%;
+            background-color: #2c3e50;
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #ecf0f1;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+        }
+
+        nav ul li a:hover {
+            background-color: #3498db;
+        }
+
+        nav ul li a.active {
+            background-color: #1abc9c;
+        }
+
+        /* Sayfa İçeriği (Nasıl Yapılır sayfası için) */
+        .content {
+            margin-top: 80px;
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #ecf0f1;
+            margin-bottom: 20px;
+        }
+
+        .instruction {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #ecf0f1;
+            margin: 20px 0;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .instruction h2 {
+            color: #1abc9c;
+            margin-bottom: 15px;
+        }
+
+        .instruction video,
+        .instruction iframe {
+            width: 100%;
+            height: 400px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-call {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 20px;
+        }
+
+        .contact-call a {
+            color: #1abc9c;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .contact-call a:hover {
+            color: #3498db;
+        }
+
+        .Image {
+            display: block;
+            margin: 0 auto 15px auto;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            padding: 10px;
+            transition: transform 0.3s ease;
+            border: 5px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .Image:hover {
+            transform: scale(1.1);
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="anasayfa.html">Ana Sayfa</a></li>
+            
+            <li><a href="projelerim.html">Projelerim</a></li>
+            <li><a href="nasil-yapilir.html" class="active">Nasıl Yapılır?</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="hakkimda.html">Hakkımda</a></li>
+            <li><a href="iletisim.html">İletişim</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>Nasıl Yapılır? Rehberi</h1>
+
+        <img class="Image" src="MuhendisCocuk.png" alt="Muhendis Cocuk Logo">
+
+        <div class="instruction">
+            <h2>Unity Projesi Başlatma</h2>
+            <video controls>
+                <source src="videolar/unity-baslatma.mp4" type="video/mp4">
+                Tarayıcınız video etiketini desteklemiyor.
+            </video>
+        </div>
+
+        <div class="instruction">
+            <h2>Python İle Hesap Makinesi Yapma</h2>
+            <iframe 
+              width="560" 
+              height="315" 
+              src="https://www.youtube.com/embed/A0-fWqAxTUM" 
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+          
+
+        <div class="contact-call">
+            <p>Yaptığım projelerime göz atmak için <a href="projelerim.html">Projelerim</a> sayfasını ziyaret edebilirsiniz.</p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+</body>
+</html>

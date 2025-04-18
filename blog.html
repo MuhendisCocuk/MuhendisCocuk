@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="icon" href="MuhendisCocukCircleIcon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Tüm CSS kodların aynı kalıyor, sadece aşağıya accordion özel stiller eklendi */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ecf0f1;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #2c3e50, #34495e, #1abc9c, #3498db);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        nav {
+            width: 100%;
+            background-color: #2c3e50;
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #ecf0f1;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+        }
+
+        nav ul li a:hover {
+            background-color: #3498db;
+        }
+
+        nav ul li a.active {
+            background-color: #1abc9c;
+        }
+
+        .content {
+            margin-top: 80px;
+            text-align: center;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .intro {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            font-size: 18px;
+            line-height: 1.6;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        .accordion-item {
+            max-width: 800px;
+            margin: 10px auto;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .accordion-title {
+            cursor: pointer;
+            padding: 15px 20px;
+            font-size: 22px;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: #1abc9c;
+            text-align: left;
+        }
+
+        .accordion-content {
+            padding: 0 20px 20px 20px;
+            font-size: 17px;
+            line-height: 1.6;
+            color: #ecf0f1;
+            display: none;
+            text-align: left;
+        }
+
+        .accordion-content.show {
+            display: block;
+        }
+
+        .contact-call {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 20px;
+        }
+
+        .contact-call a {
+            color: #1abc9c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .Image {
+            display: block;
+            margin: 0 auto 15px auto;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            padding: 10px;
+            transition: transform 0.3s ease;
+            border: 5px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .Image:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="anasayfa.html">Ana Sayfa</a></li>
+            
+            <li><a href="projelerim.html">Projelerim</a></li>
+            <li><a href="nasil-yapilir.html">Nasıl Yapılır?</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li><a href="hakkimda.html">Hakkımda</a></li>
+            <li><a href="iletisim.html">İletişim</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>Blog - Teknolojiye Dair Her Şey</h1>
+        <img class="Image" src="MuhendisCocuk.png" alt="Muhendis Cocuk Logo">
+        <div class="intro">
+            <p>Teknoloji dünyasındaki yenilikler, ilgi çekici konular ve bilmeniz gereken önemli terimler hakkında yazılarımı burada bulabilirsiniz.</p>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-title">VR (Sanal Gerçeklik) Nedir?</div>
+            <div class="accordion-content">
+                <p>VR, sanal dünyalarda etkileşimli bir deneyim sunan bir teknolojidir. Kullanıcılar, VR gözlükleri aracılığıyla sanal dünyaya giriş yapabilir ve çeşitli uygulamalarda etkileşimde bulunabilirler. Bu yazıda VR'ın nasıl çalıştığı, hangi alanlarda kullanıldığı ve gelecekteki potansiyeli hakkında bilgiler bulabilirsiniz.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-title">Yapay Zeka (AI) Nedir?</div>
+            <div class="accordion-content">
+                <p>Yapay zeka, makinelerin insan benzeri düşünme ve öğrenme becerilerini kazanmasını sağlayan bir teknolojidir. AI, günümüzde birçok sektörde kullanılıyor, özellikle oyun geliştirme, otomasyon ve sağlık alanlarında büyük bir devrim yaratıyor. Yazımda AI’nın temel prensiplerini ve kullanım alanlarını ele alıyorum.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-title">Arduino Nedir?</div>
+            <div class="accordion-content">
+                <p>Arduino, açık kaynaklı bir donanım ve yazılım platformudur. Elektronik projelerinde yaygın olarak kullanılır ve özellikle prototip geliştirme alanında önemli bir araçtır. Arduino'nun nasıl çalıştığını ve temel projeler için nasıl kullanıldığını detaylı olarak açıklıyorum.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-title">Makine Öğrenmesi (Machine Learning) Nedir?</div>
+            <div class="accordion-content">
+                <p>Makine öğrenmesi, sistemlerin verilerden öğrenerek kararlar alabilmesini sağlayan bir yapay zeka alt dalıdır. Bu yazımda, makine öğrenmesinin temel prensiplerini, algoritma türlerini ve günlük yaşamdaki kullanım alanlarını açıklıyorum.</p>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-title">Unity ile Oyun Geliştirme</div>
+            <div class="accordion-content">
+                <p>Unity, oyun geliştiriciler için en popüler platformlardan biridir. Bu yazımda, Unity'nin temel özelliklerini, oyun motorunun nasıl çalıştığını ve yeni başlayanların dikkat etmesi gereken noktaları anlatıyorum. Kendi oyununu geliştirmeye başlamak isteyenler için güzel bir başlangıç!</p>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-title">Blender ile 3D Modellemeye Giriş</div>
+            <div class="accordion-content">
+                <p>Blender, ücretsiz ve açık kaynaklı bir 3D modelleme programıdır. Oyun, animasyon ve görsel efekt projelerinde sıklıkla kullanılır. Bu yazıda Blender’ın arayüzüne giriş yapıyor ve basit bir 3D modelleme örneği ile başlayarak öğrenme yolculuğuna adım atıyoruz.</p>
+            </div>
+        </div>
+        
+
+        <div class="contact-call">
+            <p>Daha fazla teknoloji yazısı için blogumu takip etmeye devam edin! Benimle iletişime geçmek için <a href="iletisim.html">İletişim</a> sayfasını ziyaret edebilirsiniz.</p>
+        </div>
+    </div>
+
+    <script>
+        const titles = document.querySelectorAll(".accordion-title");
+    
+        titles.forEach(title => {
+            title.addEventListener("click", () => {
+                const content = title.nextElementSibling;
+    
+                // Diğer açık panelleri kapat
+                document.querySelectorAll(".accordion-content.show").forEach(panel => {
+                    if (panel !== content) {
+                        panel.classList.remove("show");
+                    }
+                });
+    
+                // Tıklanan paneli aç/kapat
+                content.classList.toggle("show");
+            });
+        });
+    
+        // URL hash ile otomatik açma
+        window.addEventListener("DOMContentLoaded", () => {
+            const hash = window.location.hash.substring(1).toLowerCase();
+            if (!hash) return;
+    
+            // Eşleşen başlığı bul ve aç
+            const map = {
+                vr: "VR (Sanal Gerçeklik) Nedir?",
+                ai: "Yapay Zeka (AI) Nedir?",
+                arduino: "Arduino Nedir?",
+                ml: "Makine Öğrenmesi (Machine Learning) Nedir?",
+                unity: "Unity ile Oyun Geliştirme",
+                blender: "Blender ile 3D Modellemeye Giriş"
+            };
+    
+            const matchTitle = map[hash];
+            if (matchTitle) {
+                titles.forEach(title => {
+                    if (title.textContent.trim() === matchTitle) {
+                        const content = title.nextElementSibling;
+    
+                        // Diğerlerini kapat
+                        document.querySelectorAll(".accordion-content").forEach(panel => panel.classList.remove("show"));
+                        content.classList.add("show");
+    
+                        // Sayfada odakla
+                        setTimeout(() => {
+                            title.scrollIntoView({ behavior: "smooth", block: "start" });
+                        }, 300);
+                    }
+                });
+            }
+        });
+    </script>
+    
+
+</body>
+</html>
