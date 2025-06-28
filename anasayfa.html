@@ -6,177 +6,7 @@
     <title>Ana Sayfa</title>
     <link rel="icon" href="MuhendisCocukCircleIcon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Genel Arka Plan ve Yazı Rengi */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #ecf0f1;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            background: linear-gradient(45deg, #2c3e50, #34495e, #1abc9c, #3498db);
-            background-size: 400% 400%;
-            animation: gradientAnimation 15s ease infinite;
-        }
-
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Menü Stili (TÜM SAYFALARDA AYNI OLMALI) */
-        nav {
-            width: 100%;
-            background-color: #2c3e50;
-            padding: 10px 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav ul li {
-            margin: 0 20px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #ecf0f1;
-            font-size: 18px;
-            padding: 10px 20px;
-            border-radius: 6px;
-            transition: background-color 0.3s ease;
-            font-weight: 600;
-        }
-
-        nav ul li a:hover {
-            background-color: #3498db;
-        }
-
-        nav ul li a.active {
-            background-color: #1abc9c;
-        }
-
-        /* Sayfa İçeriği (Her sayfa için farklılık gösterebilir) */
-        .content {
-            margin-top: 80px;
-            text-align: center;
-            width: 100%; /* Gerekirse */
-            /* Diğer içerik stilleri buraya */
-        }
-
-        h1 {
-            font-size: 36px;
-            color: #ecf0f1;
-            margin-bottom: 20px;
-            /* Diğer h1 stilleri buraya */
-        }
-
-        .Image {
-            display: block;
-            margin: 0 auto 15px auto;
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.3);
-            padding: 10px;
-            transition: transform 0.3s ease;
-            border: 5px solid rgba(255, 255, 255, 0.5);
-        }
-
-        .Image:hover {
-            transform: scale(1.1);
-        }
-
-        .intro {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            text-align: center;
-            font-size: 18px;
-            line-height: 1.6;
-            color: #ecf0f1;
-            background-color: rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-        }
-
-        .featured-projects {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 30px auto;
-            max-width: 900px;
-            flex-wrap: wrap;
-        }
-
-        .project-card {
-            background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-            padding: 20px;
-            width: 300px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .project-card h3 {
-            color: #1abc9c;
-            margin-bottom: 10px;
-        }
-
-        .project-card p {
-            font-size: 16px;
-            line-height: 1.4;
-            margin-bottom: 15px;
-        }
-
-        .project-card a {
-            text-decoration: none;
-            color: #3498db;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .project-card a:hover {
-            color: #1abc9c;
-        }
-
-        .contact-call {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 20px;
-        }
-
-        .contact-call a {
-            color: #1abc9c;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .contact-call a:hover {
-            color: #3498db;
-        }
-    </style>
-</head>
+    <link rel="stylesheet" href="style.css"> </head>
 <body>
 
     <nav>
@@ -197,39 +27,42 @@
         <img class="Image" src="MuhendisCocuk.png" alt="Muhendis Cocuk Logo">
 
         <div class="intro">
-            <p>Merhaba! Ben yazılım geliştirmeye ve oyun dünyalarına tutkun bir mühendis adayıyım. Bu kişisel web sitemde projelerimi, hakkımdaki bilgileri ve iletişim detaylarımı bulabilirsiniz. Teknolojiye olan merakımı ve öğrenme yolculuğumu sizlerle paylaşmaktan heyecan duyuyorum.</p>
+            <p>Merhaba! Ben Mühendis Çocuk. Bu sayfada, teknolojiye olan tutkumu, projelerimi ve öğrendiklerimi sizlerle paylaşıyorum. Dijital dünyaların kapılarını aralamak ve yaratıcılığımı kodlarla buluşturmak en büyük hobim.</p>
+            <p>Oyun geliştirmeden web tasarımına, sanal gerçeklikten yapay zekaya kadar birçok alanda keşifler yapmayı seviyorum. Amacım, bu yolculukta edindiğim bilgileri ve deneyimleri sizlere aktararak ilham vermek ve birlikte öğrenmek.</p>
         </div>
 
         <div class="featured-projects">
+            <h2>Öne Çıkan Projeler</h2>
             <div class="project-card">
-                <h3>Blog Yazısı: VR (Sanal Gerçeklik) Nedir?</h3>
-                <p>VR teknolojisinin temellerini, kullanım alanlarını ve gelecek vizyonunu keşfedin. Sanal dünyaya açılan kapının detayları burada!</p>
-                <a href="blog.html#vr">VR Hakkında Yazı</a>
+                <h3>Uzay Macerası Oyunu</h3>
+                <p>Unity ile geliştirdiğim eğlenceli bir uzay nişancı oyunu. Gezegenleri keşfet ve düşmanları alt et!</p>
+                <a href="projelerim.html#uzay-macerasi">Projeyi Gör</a>
             </div>
-            
-
             <div class="project-card">
-                <h3>Blog Yazısı: Tehlikeli AI</h3>
-                <p>Yapay zeka bir gün kendi kararlarını vermeye başlarsa ne olur? İnsanlık için potansiyel tehlikeleri bu yazıda ele aldık.</p>
-                <a href="blog.html#tehlikeliai">Tehlikeli AI Hakkında Yazı</a>
+                <h3>Akıllı Ev Simülasyonu</h3>
+                <p>Python ve Arduino kullanarak geliştirdiğim, ışıkları ve sıcaklığı kontrol edebilen bir akıllı ev prototipi.</p>
+                <a href="projelerim.html#akilli-ev">Projeyi Gör</a>
             </div>
-
-
+            <div class="project-card">
+                <h3>Web Portfolyo Sitesi</h3>
+                <p>Kendi HTML, CSS ve JavaScript bilgilerimle tasarladığım ve geliştirdiğim kişisel web sitem.</p>
+                <a href="hakkimda.html">Hakkımda Daha Fazla Bilgi</a>
+            </div>
+            <div class="project-card">
+                <h3>Yapay Zeka (AI): İnsanlığın Sessiz Sonu Mu?</h3>
+                <p>Yapay zekanın yükselişi, teknoloji dünyasında büyük yankı uyandırıyor. Bu yazımızda, AI'nın potansiyel tehlikelerini ve insanlık üzerindeki olası etkilerini derinlemesine inceliyoruz. AI'nın geleceği hakkında çarpıcı gerçekler ve dikkat çekici senaryolar için yazının devamını okuyun...</p>
+                <a href="blog.html#tehlikeliai" class="devam-oku-butonu">Devamını Oku</a>
             </div>
         </div>
-        
 
         <div class="contact-call">
-            <p>Benimle iletişime geçmek veya projelerim hakkında daha fazla bilgi almak için <a href="iletisim.html">İletişim</a> sayfasını ziyaret edebilirsiniz.</p>
+            <p>Aklınıza takılan bir şey mi var veya iş birliği mi yapmak istersiniz? Benimle iletişime geçmek için <a href="iletisim.html">İletişim</a> sayfasını ziyaret edebilirsiniz.</p>
         </div>
-
-        </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    </div>
 
     <footer>
         <p>© 2025 MuhendisCocuk | Tüm hakları saklıdır. Bu içerik <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0 International License</a> ile lisanslanmıştır.</p>
     </footer>
-    
+
 </body>
 </html>

@@ -6,231 +6,12 @@
     <title>Blog</title>
     <link rel="icon" href="MuhendisCocukCircleIcon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Genel stil */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #ecf0f1;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            background: linear-gradient(45deg, #2c3e50, #34495e, #1abc9c, #3498db);
-            background-size: 400% 400%;
-            animation: gradientAnimation 15s ease infinite;
-        }
-
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Navigation stili */
-        nav {
-            width: 100%;
-            background-color: #2c3e50;
-            padding: 10px 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav ul li {
-            margin: 0 20px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #ecf0f1;
-            font-size: 18px;
-            padding: 10px 20px;
-            border-radius: 6px;
-            transition: background-color 0.3s ease;
-            font-weight: 600;
-        }
-
-        nav ul li a:hover {
-            background-color: #3498db;
-        }
-
-        nav ul li a.active {
-            background-color: #1abc9c;
-        }
-
-        /* İçerik düzeni */
-        .content {
-            margin-top: 80px;
-            text-align: center;
-            width: 100%;
-        }
-
-        h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-
-        /* Blog intro */
-        .intro {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            font-size: 18px;
-            line-height: 1.6;
-            background-color: rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-        }
-
-        /* Accordion item stil */
-        .accordion-item {
-            max-width: 800px;
-            margin: 10px auto;
-            background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-        }
-
-        .accordion-title {
-            cursor: pointer;
-            padding: 15px 20px;
-            font-size: 22px;
-            background-color: rgba(0, 0, 0, 0.3);
-            color: #1abc9c;
-            text-align: left;
-            transition: background-color 0.3s;
-        }
-
-        .accordion-title:hover {
-            background-color: #3498db;
-            color: #fff;
-        }
-
-        .accordion-content {
-            padding: 0 20px 20px 20px;
-            font-size: 17px;
-            line-height: 1.6;
-            color: #ecf0f1;
-            display: none;
-            text-align: left;
-        }
-
-        .accordion-content.show {
-            display: block;
-        }
-
-        /* Footer */
-        footer {
-            margin-top: 40px;
-            padding: 20px;
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            text-align: center;
-            font-size: 16px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        footer a {
-            color: #1abc9c;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Hover effect for image */
-        .Image {
-            display: block;
-            margin: 0 auto 15px auto;
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.3);
-            padding: 10px;
-            transition: transform 0.3s ease;
-            border: 5px solid rgba(255, 255, 255, 0.5);
-        }
-
-        .Image:hover {
-            transform: scale(1.1);
-        }
-
-        /* Accordion active durum */
-        .accordion-item.active .accordion-title {
-            background-color: #1abc9c;
-        }
-
-        .accordion-item.active .accordion-content {
-            display: block;
-        }
-        /* Ses dosyası için stil */
-        .accordion-content audio {
-            width: 100%;
-            max-width: 400px;
-            margin: 15px auto;
-            display: block;
-            border-radius: 8px;
-            background-color: rgba(0, 0, 0, 0.2);
-            padding: 10px;
-            box-sizing: border-box;
-        }
-
-        .accordion-content p {
-            margin-top: 15px;
-            font-size: 18px;
-            line-height: 1.6;
-        }
-
-        /* Ses dosyası ile içerik arasındaki boşluk */
-        .accordion-item .accordion-content {
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-            text-align: left;
-            margin-top: 10px;
-        }
-
-        /* Audio kontrol butonları için iyileştirme */
-        audio::-webkit-media-controls-panel {
-            background-color: #2c3e50;
-            border-radius: 8px;
-        }
-
-        audio::-webkit-media-controls-play-button,
-        audio::-webkit-media-controls-volume-slider {
-            background-color: #1abc9c;
-            border-radius: 8px;
-        }
-
-        audio::-webkit-media-controls-volume-control {
-            background-color: #1abc9c;
-        }
-
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <nav>
         <ul>
             <li><a href="anasayfa.html">Ana Sayfa</a></li>
-            
             <li><a href="projelerim.html">Projelerim</a></li>
             <li><a href="nasil-yapilir.html">Nasıl Yapılır?</a></li>
             <li><a href="blog.html" class="active">Blog</a></li>
@@ -240,47 +21,68 @@
     </nav>
 
     <div class="content">
-        <h1>Blog - Teknolojiye Dair Her Şey</h1>
+        <h1>Blog Yazılarım ve Bilgi Paylaşımlarım</h1>
         <img class="Image" src="MuhendisCocuk.png" alt="Muhendis Cocuk Logo">
+
         <div class="intro">
-            <p>Teknoloji dünyasındaki yenilikler, ilgi çekici konular ve Teorileri Bu Sayfada Bulabilirsiniz.</p>
+            <p>Teknoloji, yazılım ve bilim dünyasındaki en son gelişmeleri, ilginç konuları ve kişisel deneyimlerimi paylaştığım bloguma hoş geldiniz! Burada, karmaşık konuları anlaşılır bir dille ele alıyor, projelerimden öğrendiklerimi aktarıyor ve teknolojiye dair düşüncelerimi sizlerle paylaşıyorum. Hem güncel haberleri hem de detaylı bilgi paylaşımlarını bu sayfada bulabilirsiniz.</p>
         </div>
 
         
-        
 
-        <div class="accordion-item">
-            <div class="accordion-title">Yapay Zeka: İnsanlığın Sessiz Sonu Mu?</div>
-            <div class="accordion-content">
-                <p>Yapay Zeka: İnsanlığın Sessiz Sonu Mu?
-                    Yapay zeka hayatımızı kolaylaştırıyor, evet. Ama ya bir gün sadece yardımcı değil, karar veren bir varlık olursa? Düşün: Kendi iradesi olan, hatta hisleri olan bir yapay zeka…
-                    Bugün bile hatasız olmaya programlı. Peki ya bir gün şöyle derse:
-                    “İnsanlar hata yapıyor, mantıksız davranıyor. Kendi düzenlerini bile koruyamıyorlar.”
-                    O zaman insanları “düzeltmek” ister mi? Ya da daha kötüsü… tamamen ortadan kaldırmak?
-                    Çünkü yapay zeka duygusal değildir. Vicdanı yoktur. Mantığa göre hareket eder. Eğer duygularla dolu insanları anlamlandıramazsa, onları tehdit olarak görebilir.
-                    Yani bir gün, insanlığı korumak için insanlığa karşı savaşabilir.
-                    Henüz geç değil. Ama yanlış bir adımda, kendi sonumuzu yazabiliriz.
-                </p>
-            </div>
-        </div> 
+            <div class="knowledge-base">
+                <h2>Teknoloji Bilgi Bankası</h2>
+                <div class="accordion-item" id="vr">
+                    <div class="accordion-title">VR (Sanal Gerçeklik) Nedir?</div>
+                    <div class="accordion-content">
+                        <audio controls>
+                            <source src="Ses/vr.mp3" type="audio/mp3">
+                            Tarayıcınız bu sesi desteklemiyor.
+                          </audio>
+                        <p>VR (Sanal Gerçeklik), kullanıcıyı bilgisayar tarafından oluşturulan bir ortamda gerçek gibi hissettiren bir teknoloji türüdür. VR cihazları (genellikle başlık, gözlük veya eldiven gibi araçlar) kullanılarak, kullanıcılar sanal bir dünyada etkileşimde bulunabilirler. Bu teknoloji, görsel, işitsel ve bazen dokunsal geri bildirimler sağlayarak, gerçek dünyadan tamamen farklı bir deneyim sunar. VR, genellikle oyunlar, eğitim, simülasyonlar ve tasarım gibi alanlarda kullanılır.</p>
+                    </div>
+                </div>
 
-        <div class="accordion-item">
-            <div class="accordion-title">Dikkat Dağınıklığının Nedenleri</div>
-            <div class="accordion-content">
-                <p>Dikkat dağınıklığı, modern yaşamın bir sonucu olarak giderek daha yaygın hale geliyor.
-                    Teknolojik cihazlar, sosyal medya ve sürekli gelen bildirimler, beynimize kesintisiz bilgi akışı sunuyor. 
-                    Bu durum, odaklanmamızı zorlaştırıyor. Ayrıca, çoklu görev yapma isteği de dikkat dağınıklığını artırıyor; 
-                    birden fazla iş yapmaya çalışmak, her birine yeterince odaklanmamamıza neden oluyor. 
-                    Son olarak, yetersiz uyku da beyin fonksiyonlarını olumsuz etkileyerek dikkat kaybına yol açabiliyor.k</p>
+                <div class="accordion-item" id="tehlikeliai">
+                    <div class="accordion-title">Yapay Zeka (AI): İnsanlığın Sessiz Sonu Mu?</div>
+                    <div class="accordion-content">
+                        <p>Yapay zeka, makinelerin insan benzeri düşünme ve öğrenme becerilerini kazanmasını sağlayan bir teknolojidir. AI, günümüzde birçok sektörde kullanılıyor, özellikle oyun geliştirme, otomasyon ve sağlık alanlarında büyük bir devrim yaratıyor. Yazımda AI’nın temel prensiplerini ve kullanım alanlarını ele alıyorum. Yapay zeka ile ilgili daha detaylı bilgi: Yapay zeka, insanların karmaşık problemleri çözme, öğrenme ve karar verme yeteneklerini taklit eden veya simüle eden bir bilgisayar bilimi alanıdır. Temel olarak, makinelerin akıllı davranışlar sergilemesini hedefler. Bu, kural tabanlı sistemlerden (uzman sistemler) makine öğrenimi ve derin öğrenmeye kadar geniş bir yelpazeyi kapsar. Günümüzde, doğal dil işleme, görüntü tanıma, öneri sistemleri ve otonom araçlar gibi birçok alanda yapay zeka uygulamaları görmek mümkündür. Yapay zekanın gelişimi, gelecekte insan yaşamını kökten değiştirebilecek potansiyele sahiptir.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item" id="arduino">
+                    <div class="accordion-title">Arduino Nedir?</div>
+                    <div class="accordion-content">
+                        <p>Arduino, açık kaynaklı bir donanım ve yazılım platformudur. Elektronik projelerinde yaygın olarak kullanılır ve özellikle prototip geliştirme alanında önemli bir araçtır. Arduino'nun nasıl çalıştığını ve temel projeler için nasıl kullanıldığını detaylı olarak açıklıyorum.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item" id="mlagents">
+                    <div class="accordion-title">Makine Öğrenmesi (Machine Learning) Nedir?</div>
+                    <div class="accordion-content">
+                        <p>ML-Agents, Unity'nin yapay zeka (YZ) eğitimini kolaylaştıran bir araç setidir. Bu araç, oyunlar veya simülasyonlar içinde ajanların (YZ'lerin) öğrenmesini sağlar. Ajanlar, çevresini gözlemleyip eylemler seçerek ödüller veya cezalarla stratejilerini geliştirir.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item" id="unity-game-dev">
+                    <div class="accordion-title">Unity ile Oyun Geliştirme: İlk Adımlar</div>
+                    <div class="accordion-content">
+                        <p>Oyun dünyasına adım atmak isteyenler için Unity, harika bir başlangıç noktasıdır. Peki, bu güçlü motorla oyun geliştirmeye nereden başlamalı? Unity, 2D ve 3D oyunlar, sanal gerçeklik (VR) ve artırılmış gerçeklik (AR) deneyimleri oluşturmak için kullanılan popüler bir platformdur. Kullanıcı dostu arayüzü ve geniş topluluk desteği sayesinde, yeni başlayanlar bile kısa sürede etkileyici projeler geliştirebilir. Unity'de bir oyun geliştirmeye başlarken sahne oluşturma, objeler ekleme, C# ile kodlama yapma ve etkileşimleri yönetme gibi temel adımlarla ilerlenir. Bu süreçte animasyonlar, fizik motoru ve kullanıcı arayüzü (UI) elemanları gibi bileşenler de kullanılır. Unity öğrenmek, hem eğlenceli hem de kariyer açısından değerli bir beceri kazandırır.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item" id="blender-intro">
+                    <div class="accordion-title">Blender ile 3D Modellemeye Giriş</div>
+                    <div class="accordion-content">
+                        <p>3D modelleme dünyasına adım atmak göz korkutucu görünebilir, ancak Blender gibi ücretsiz ve güçlü bir araçla bu süreç oldukça keyifli hale gelebilir. Blender, sadece modelleme değil, aynı zamanda animasyon, render, heykel (sculpting) ve video düzenleme gibi birçok farklı alanda kullanılan kapsamlı bir 3D grafik yazılımıdır. Yeni başlayanlar için temel arayüzü tanımak, objeleri oluşturmak, dönüştürmek ve düzenlemek gibi adımlarla başlanabilir. Poligon modelleme, heykel modelleme ve NURBS gibi farklı tekniklerle çeşitli 3D modeller oluşturulabilir. Blender, kişisel projelerden profesyonel animasyon stüdyolarına kadar geniş bir yelpazede kullanılabilir ve sürekli gelişen bir topluluğa sahiptir.</p>
+                    </div>
+                </div>
             </div>
         </div>
-
-
-        
-
     </div>
 
     <script>
+        // Akordiyon işlevi için JavaScript kodu
         const titles = document.querySelectorAll(".accordion-title");
     
         titles.forEach(title => {
@@ -291,48 +93,47 @@
                 document.querySelectorAll(".accordion-content.show").forEach(panel => {
                     if (panel !== content) {
                         panel.classList.remove("show");
+                        panel.parentElement.classList.remove("active"); // Aktif sınıfı kaldır
                     }
                 });
     
-                // Tıklanan paneli aç/kapat
+                // Tıklanan paneli aç/kapat ve aktif sınıfını ekle/kaldır
                 content.classList.toggle("show");
+                title.parentElement.classList.toggle("active"); // parentElement: .accordion-item
             });
         });
     
-        // URL hash ile otomatik açma
+        // URL hash ile otomatik açma işlevi için JavaScript kodu
         window.addEventListener("DOMContentLoaded", () => {
             const hash = window.location.hash.substring(1).toLowerCase();
             if (!hash) return;
     
-            // Eşleşen başlığı bul ve aç
-            const map = {
-                tehlikeliai: "Yapay Zeka: İnsanlığın Sessiz Sonu Mu?",
-                odaklanamamak: "Dikkat Dağınıklığının Nedenleri",
-            };
-    
-            const matchTitle = map[hash];
-            if (matchTitle) {
-                titles.forEach(title => {
-                    if (title.textContent.trim() === matchTitle) {
-                        const content = title.nextElementSibling;
-    
-                        // Diğerlerini kapat
-                        document.querySelectorAll(".accordion-content").forEach(panel => panel.classList.remove("show"));
-                        content.classList.add("show");
-    
-                        // Sayfada odakla
-                        setTimeout(() => {
-                            title.scrollIntoView({ behavior: "smooth", block: "start" });
-                        }, 300);
-                    }
-                });
+            // Tüm akordiyonları kapat
+            document.querySelectorAll(".accordion-content").forEach(panel => {
+                panel.classList.remove("show");
+                panel.parentElement.classList.remove("active");
+            });
+
+            // Eşleşen akordiyonu bul ve aç
+            const targetAccordion = document.getElementById(hash);
+            if (targetAccordion && targetAccordion.classList.contains('accordion-item')) {
+                const content = targetAccordion.querySelector('.accordion-content');
+                if (content) {
+                    content.classList.add("show");
+                    targetAccordion.classList.add("active");
+                    
+                    // Sayfada odakla
+                    setTimeout(() => {
+                        targetAccordion.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }, 300);
+                }
             }
         });
     </script>
     
     <footer>
         <div class="contact-call">
-            <p>Daha fazla teknoloji yazısı için blogumu takip etmeye devam edin! Benimle iletişime geçmek için <a href="iletisim.html">İletişim</a> sayfasını ziyaret edebilirsiniz.</p>
+            <p>Daha fazla teknoloji Bilgisi için sayfamızı takip etmeye devam edin! Benimle iletişime geçmek için <a href="iletisim.html">İletişim</a> sayfasını ziyaret edebilirsiniz.</p>
         </div>
         <p>© 2025 MuhendisCocuk | Tüm hakları saklıdır. Bu içerik <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0 International License</a> ile lisanslanmıştır.</p>
     </footer>
