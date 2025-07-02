@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Giriş - Muhendis Cocuk</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" defer>
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBob-7FwTcCDaCQNOSRmu2a-4qoZYUUxW8",
+      authDomain: "muhendiscocukweb.firebaseapp.com",
+      projectId: "muhendiscocukweb",
+      storageBucket: "muhendiscocukweb.appspot.com",
+      messagingSenderId: "936448235599",
+      appId: "1:936448235599:web:db3d8d0f9ea56f1d53723a",
+      measurementId: "G-VQJBDV69XP"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const loginForm = document.getElementById("login-form");
+    const registerForm = document.getElementById("register-form");
+    const errorDiv = document.getElementById("error-message");
+
+    loginForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      errorDiv.textContent = "";
+      const email = loginForm.email.value;
+      const password = loginForm.password.value;
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        // Giriş başarılıysa forum sayfasına yönlendir
+        window.location.href = "forum.html";
+      } catch (error) {
+        errorDiv.textContent = error.message;
+      }
+    });
+
+    registerForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      errorDiv.textContent = "";
+      const email = registerForm.email.value;
+      const password = registerForm.password.value;
+
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        alert("Kayıt başarılı! Giriş yapabilirsiniz.");
+        registerForm.reset();
+      } catch (error) {
+        errorDiv.textContent = error.message;
+      }
+    });
+
+    // Eğer kullanıcı zaten giriş yapmışsa direkt forum sayfasına yolla
+    onAuthStateChanged(auth, user => {
+      if (user) {
+        window.location.href = "forum.html";
+      }
+    });
+  </script>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="anasayfa.html">Ana Sayfa</a></li>
+      <li><a href="projelerim.html">Projelerim</a></li>
+      <li><a href="nasil-yapilir.html">Nasıl Yapılır?</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="hakkimda.html">Hakkımda</a></li>
+      <li><a href="iletisim.html">İletişim</a></li>
+    </ul>
+  </nav>
+
+  <div class="content" style="max-width:400px; margin-top: 100px;">
+    <h1>Giriş Yap veya Kayıt Ol</h1>
+
+    <div id="error-message" style="color:#e74c3c; margin-bottom:15px;"></div>
+
+    <form id="login-form" style="margin-bottom:30px;">
+      <h2>Giriş</h2>
+      <input type="email" name="email" placeholder="E-posta" required style="width:100%; padding:10px; margin-bottom:10px;"/>
+      <input type="password" name="password" placeholder="Şifre" required minlength="6" style="width:100%; padding:10px; margin-bottom:10px;"/>
+      <button type="submit" style="width:100%; padding:10px; background:#1abc9c; border:none; color:#ecf0f1; font-weight:bold; cursor:pointer;">Giriş Yap</button>
+    </form>
+
+    <form id="register-form">
+      <h2>Kayıt Ol</h2>
+      <input type="email" name="email" placeholder="E-posta" required style="width:100%; padding:10px; margin-bottom:10px;"/>
+      <input type="password" name="password" placeholder="Şifre (min 6 karakter)" required minlength="6" style="width:100%; padding:10px; margin-bottom:10px;"/>
+      <button type="submit" style="width:100%; padding:10px; background:#3498db; border:none; color:#ecf0f1; font-weight:bold; cursor:pointer;">Kayıt Ol</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>© 2025 MuhendisCocuk | Tüm hakları saklıdır.</p>
+  </footer>
+</body>
+</html>

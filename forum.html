@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Forum - Muhendis Cocuk</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" defer>
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+    import { getFirestore, collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBob-7FwTcCDaCQNOSRmu2a-4qoZYUUxW8",
+      authDomain: "muhendiscocukweb.firebaseapp.com",
+      projectId: "muhendiscocukweb",
+      storageBucket: "muhendiscocukweb.appspot.com",
+      messagingSenderId: "936448235599",
+      appId: "1:936448235599:web:db3d8d0f9ea56f1d53723a",
+      measurementId: "G-VQJBDV69XP"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // DOM elemanları
+    const form = document.getElementById("problem-form");
+    const problemInput = document.getElementById("problem-input");
+    const problemsList = document.getElementById("problems-list");
+    const logoutBtn = document.getElementById("logout-btn");
+    const userEmailSpan = document.getElementById("user-email");
+
+    // Kullanıcı giriş kontrolü
+    onAuthStateChanged(auth, user => {
+      if (user) {
+        userEmailSpan.textContent = user.email;
+        loadProblems();
+      } else {
+        // Giriş yoksa login sayfasına dön
+        window.location.href = "login.html";
+      }
+    });
+
+    // Sorunları Firestore’dan yükle
+    async function loadProblems() {
+      problemsList.innerHTML = "<p>Yükleniyor...</p>";
+      try {
+        const problemsCol = collection(db, "problems");
+        const q = query(problemsCol, orderBy("createdAt", "desc"));
+        const snapshot = await getDocs(q);
+        problemsList.innerHTML = "";
+
+        if (snapshot.empty) {
+          problemsList.innerHTML = "<p>Henüz hiç sorun yok, ilk sen yaz!</p>";
+          return;
+        }
+
+        snapshot.forEach(doc => {
+          const problem = doc.data();
+          problemsList.insertAdjacentHTML("beforeend", `
+            <div class="accordion-item">
+              <div class="accordion-title">${escapeHtml(problem.title)}</div>
+              <div class="accordion-content">${escapeHtml(problem.description)}</div>
+            </div>
+          `);
+        });
+
+        // Accordion davranışı
+        document.querySelectorAll(".accordion-title").forEach(title => {
+          title.addEventListener("click", () => {
+            title.parentElement.classList.toggle("active");
+          });
+        });
+      } catch (e) {
+        problemsList.innerHTML = "<p>Yüklerken hata oluştu.</p>";
+      }
+    }
+
+    // Form gönderme
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const problemText = problemInput.value.trim();
+      if (!problemText) return;
+
+      const newProblem = {
+        title: problemText.length > 30 ? problemText.substring(0, 30) + "..." : problemText,
+        description: problemText,
+        createdAt: new Date()
+      };
+
+      try {
+        await addDoc(collection(db, "problems"), newProblem);
+        problemInput.value = "";
+        loadProblems();
+      } catch (e) {
+        alert("Sorun kaydedilirken hata oluştu.");
+      }
+    });
+
+    // Çıkış yap
+    logoutBtn.addEventListener("click", async () => {
+      await signOut(auth);
+      window.location.href = "login.html";
+    });
+
+    // Basit XSS koruma için fonksiyon
+    function escapeHtml(text) {
+      return text.replace(/&/g, "&amp;")
+                 .replace(/</g, "&lt;")
+                 .replace(/>/g, "&gt;")
+                 .replace(/"/g, "&quot;")
+                 .replace(/'/g, "&#039;");
+    }
+  </script>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="anasayfa.html">Ana Sayfa</a></li>
+      <li><a href="projelerim.html">Projelerim</a></li>
+      <li><a href="nasil-yapilir.html">Nasıl Yapılır?</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="hakkimda.html">Hakkımda</a></li>
+      <li><a href="iletisim.html">İletişim</a></li>
+    </ul>
+  </nav>
+
+  <div class="content" style="max-width:600px; margin-top: 100px; text-align:left;">
+    <h1>Forum</h1>
+    <p>Hoş geldin, <b><span id="user-email"></span></b>! <button id="logout-btn" style="margin-left:15px; padding:5px 10px; cursor:pointer;">Çıkış Yap</button></p>
+
+    <form id="problem-form" style="margin-bottom: 30px;">
+      <textarea id="problem-input" rows="4" placeholder="Sorununuzu buraya yazın..." required style="width:100%; padding:10px; font-size:16px;"></textarea>
+      <button type="submit" style="margin-top:10px; padding:10px 20px; background:#1abc9c; border:none; color:#ecf0f1; font-weight:bold; cursor:pointer;">Gönder</button>
+    </form>
+
+    <div id="problems-list"></div>
+  </div>
+
+  <footer>
+    <p>© 2025 MuhendisCocuk | Tüm hakları saklıdır.</p>
+  </footer>
+
+</body>
+</html>
