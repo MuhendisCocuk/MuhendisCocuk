@@ -588,3 +588,32 @@ iframe[width="1080"][height="1920"] {
     text-align: left;
     margin-top: 10px;
 }
+/* Video için özel stil */
+video {
+    width: 100%;
+    max-width: 900px;        /* Sayfandaki max genişlikle uyumlu */
+    height: auto;
+    border-radius: 12px;     /* Hafif yuvarlatılmış köşeler */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);  /* Derinlik için gölge */
+    background-color: rgba(0, 0, 0, 0.15);      /* Video arka planı hafif karartma */
+    outline: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    margin: 20px auto;       /* Ortalamak için */
+    display: block;
+}
+
+/* Videoya hover efekti */
+video:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Mobil cihazlarda responsive */
+@media (max-width: 600px) {
+    video {
+        max-width: 100%;
+        border-radius: 8px;
+        margin: 15px 0;
+    }
+}
